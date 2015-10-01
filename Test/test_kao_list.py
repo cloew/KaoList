@@ -51,5 +51,28 @@ class previous(unittest.TestCase):
         """ Test that None is returned when there is no previous item in the list """
         expected = None
         item = 2
-        l = KaoList([item])
+        l = KaoList([item, 1])
         self.assertEqual(expected, l.previous(item))
+
+class next(unittest.TestCase):
+    """ Test cases of next """
+        
+    def test_hasNext(self):
+        """ Test that the next element is returned when it exists """
+        expected = 1
+        item = 2
+        l = KaoList([item, expected])
+        self.assertEqual(expected, l.next(item))
+        
+    def test_noItem(self):
+        """ Test that the proper error is thrown when the item is not in the list """
+        item = 2
+        l = KaoList()
+        self.assertRaises(ValueError, l.next, item)
+        
+    def test_noNext(self):
+        """ Test that None is returned when there is no next item in the list """
+        expected = None
+        item = 2
+        l = KaoList([1, item])
+        self.assertEqual(expected, l.next(item))

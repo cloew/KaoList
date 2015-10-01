@@ -24,7 +24,15 @@ class KaoList:
     def previous(self, item):
         """ Return the element that occurs before the given item """
         index = self.index(item)
-        return self.get_index(index-1)
+        if index > 0:
+            return self.get_index(index-1)
+        else:
+            return None
+        
+    def next(self, item):
+        """ Return the element that occurs after the given item """
+        index = self.index(item)
+        return self.get_index(index+1)
         
     def get_index(self, index):
         """ Return the vlaue at the given index or None """
