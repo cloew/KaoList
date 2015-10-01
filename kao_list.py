@@ -2,7 +2,7 @@ from kao_decorators import proxy_for
 from smart_defaults import smart_defaults, PerCall
 
 @proxy_for('_lst', ['__contains__', '__len__', '__getitem__', '__setitem__', '__iter__',
-                    'append', 'index'])
+                    'append', 'index', '__repr__'])
 class KaoList:
     """ Represents a list of items """
     
@@ -35,5 +35,6 @@ class KaoList:
         return self.get_index(index+1)
         
     def get_index(self, index):
-        """ Return the vlaue at the given index or None """
-        return self[index] if abs(index) < len(self) else None
+        """ Return the value at the given index or None """
+        indexValue = index if index >= 0 else abs(index)-1
+        return self[index] if indexValue < len(self) else None
