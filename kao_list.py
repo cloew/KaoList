@@ -38,3 +38,7 @@ class KaoList:
         """ Return the value at the given index or None """
         indexValue = index if index >= 0 else abs(index)-1
         return self[index] if indexValue < len(self) else None
+        
+    def __eq__(self, other):
+        """ Return if this list is equal to another """
+        return self._lst == other

@@ -76,3 +76,34 @@ class next(unittest.TestCase):
         item = 2
         l = KaoList([1, item])
         self.assertEqual(expected, l.next(item))
+
+class eq(unittest.TestCase):
+    """ Test cases of eq """
+        
+    def test_KaoListPasses(self):
+        """ Test that the equality works properly against a KaoList """
+        items = [1,2,3]
+        first = KaoList(list(items))
+        second = KaoList(list(items))
+        self.assertEqual(first, second)
+        
+    def test_KaoListFails(self):
+        """ Test that the equality works properly against a KaoList """
+        items = [1,2,3]
+        first = KaoList(list(items))
+        second = KaoList(list(items[:-1]))
+        self.assertNotEqual(first, second)
+        
+    def test_ListPasses(self):
+        """ Test that the equality works properly against a standard list """
+        items = [1,2,3]
+        first = KaoList(list(items))
+        second = list(items)
+        self.assertEqual(first, second)
+        
+    def test_ListFails(self):
+        """ Test that the equality works properly against a standard list """
+        items = [1,2,3]
+        first = KaoList(list(items))
+        second = list(items[:-1])
+        self.assertNotEqual(first, second)
